@@ -1,0 +1,615 @@
+:root {
+    /* Paleta Sofisticada */
+    --primary-dark: #0f172a;    /* Azul Marinho Profundo */
+    --primary-light: #1e293b;   /* Azul Médio para contrastes */
+    --accent-beige: #e5e0d8;    /* Tom de Palha/Bege claro */
+    --accent-gold: #d4b08c;     /* Detalhe Bege/Dourado fosco */
+    --bg-light: #fdfcfb;        /* Fundo quase branco para áreas de leitura */
+    --text-main: #334155;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Playfair Display', 'Segoe UI', serif; }
+
+body { background-color: var(--bg-light); color: var(--text-main); }
+/* Navegação */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--primary-dark);
+    padding: 15px 5%;
+    border-bottom: 1px solid var(--accent-gold);
+    position: fixed; width: 100%; top: 0; z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav ul { display: flex; list-style: none; }
+nav ul li { margin-left: 20px; }
+nav a { text-decoration: none; color: var(--primary); font-weight: bold; }
+/* Container que agrupa foto e nome */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espaço entre a foto e o nome */
+}
+
+/* Estilização da sua foto de perfil */
+.profile-img {
+    width: 45px;      /* Tamanho discreto e elegante */
+    height: 45px;
+    border-radius: 50%; /* Deixa a foto redonda */
+    object-fit: cover;  /* Garante que a foto não fique esticada */
+    border: 2px solid var(--accent); /* Um detalhe em dourado para destacar */
+}
+
+/* Estilização do nome ao lado da foto */
+.logo-name {
+    color: var(--accent-beige);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Ajuste no Nav para garantir que tudo fique alinhado */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%; /* Reduzi um pouco o padding vertical para o header não ficar alto demais */
+    background: var(--primary-dark);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow:0 2px 10px rgba(0,0,0,0.3);
+}
+nav ul li a {
+    color: var(--accent-beige);
+    font-weight: 300;
+}
+nav ul li a:hover { color: var(--accent-gold);}
+/* Botão de Destaque no Menu */
+.btn-nav {
+    border: 1px solid var(--accent-gold);
+    padding: 8px 20px;
+    border-radius: 2px; /* Mais quadrado = mais minimalista */
+    transition: 0.4s;
+}
+
+.btn-nav:hover {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+}
+
+/* ===========================
+   HERO SECTION COM SLIDER
+   =========================== */
+
+.hero {
+    height: 100vh; /* Ocupa a altura inteira da tela */
+    position: relative; /* Necessário para posicionar o conteúdo e o slider dentro */
+    overflow: hidden; /* Garante que nada saia dos limites da section */
+    margin-top: 0; /* Espaço para o menu fixo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+}
+
+/* Contêiner que segura todos os slides */
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Fica atrás do conteúdo */
+}
+
+/* Estilo comum para cada slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6));
+    
+    /* Estado inicial: Invisível e transparente */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; /* Velocidade da transição de fade */
+}
+
+/* Classe que ativa o slide (mostra ele) */
+.slide.active {
+    opacity: 1;
+}
+
+/* Conteúdo de Texto (H1, P, Botão) */
+.hero-content {
+    position: relative;
+    z-index: 10; /* Fica à frente do slider */
+    padding-top: 80px;
+    max-width: 800px;
+}
+
+.hero h1 {
+    color: var(--accent-beige);
+    font-family: 'Playfair Display', serif; /* Fonte serifada para luxo */  
+    font-size: 3.5rem; /* Aumentei um pouco para telas grandes */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para melhorar leitura */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Responsividade para celulares */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1rem; }
+}
+/* ===========================
+   CARDS DE EMPREENDIMENTOS
+   =========================== */
+.products { 
+    padding: 100px 5%; 
+    text-align: center; 
+    background: var(--white); 
+}
+
+.products h2 {
+    color: var(--primary-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.product-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Deixa os cards mais largos */
+    gap: 30px; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estrutura Principal do Card */
+.product-card {
+    background: var(--bg-light); 
+    border: 1px solid #eaeaea;
+    border-bottom: 4px solid var(--accent-gold); 
+    border-radius: 2px;
+    overflow: hidden; /* Impede que a foto vaze para fora dos cantos retos */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: left; /* Texto à esquerda fica mais elegante em cards com foto */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08); /* Sombra suave ao passar o mouse */
+}
+
+/* Área da Foto */
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 240px; /* Padroniza a altura de todas as fotos */
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a foto não distorça */
+    transition: transform 0.6s ease;
+}
+
+/* Efeito de zoom na foto ao passar o mouse */
+.product-card:hover .product-image img {
+    transform: scale(1.08); 
+}
+
+/* Etiqueta Flutuante (Badge) */
+.badge { 
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--accent-beige); 
+    color: var(--primary-dark); 
+    font-weight: 600;
+    padding: 6px 15px; 
+    border-radius: 2px; 
+    font-size: 0.75rem; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2; /* Mantém a etiqueta acima da foto */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Área do Texto do Empreendimento */
+.product-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h3 { 
+    color: var(--primary-dark); 
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.product-info p {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Empurra o botão sempre para o final do card */
+}
+
+/* Botão de Saiba Mais no Card */
+.btn-card { 
+    display: inline-block; 
+    color: var(--primary-dark); 
+    font-weight: 600; 
+    text-decoration: none; 
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-top: 1px solid #eaeaea; /* Uma linha elegante separando o texto do botão */
+    padding-top: 15px;
+    transition: color 0.3s ease;
+}
+
+.btn-card:hover {
+    color: var(--accent-gold);
+}
+
+.btn-card i {
+    margin-left: 5px; /* Espaço para a setinha do FontAwesome */
+}
+.cta-button {
+    /* background: var(--accent-beige); */
+    color: var(--text-main);
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-decoration: none;
+}   
+.cta-button:hover{
+    color: var(--accent-gold);
+}
+.hero-content a{
+    color: var(--accent-gold);
+}
+.hero-content a:hover{
+    color: var(--accent-beige);
+}
+
+/* Footer */
+footer {  text-align: center; padding: 50px 5%; }
+.social-links a {
+    color: var(--accent-gold);
+}
+/* Section Sobre e Produtos */
+.about {
+    background: var(--bg-light);
+    padding: 100px 15%;
+    text-align: center;
+}
+
+.about h2 { color: var(--primary-dark); }
+.product-card h3 { color: var(--primary-dark); }
+
+
+/* Footer Profissional */
+footer {
+    background: var(--primary-dark);
+    color: var(--accent-beige);
+    border-top: 5px solid var(--accent-gold);
+}
+
+.social-links a {
+    text-decoration: none;
+    color: var(--accent-gold);
+}
+/* ===========================
+   SECTION SOBRE MIM
+   =========================== */
+.about {
+    background: var(--bg-light);
+    padding: 100px 5%; /* Ajustado o padding lateral */
+}
+
+/* Container para alinhar lado a lado */
+.about-container {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente a foto com o texto */
+    justify-content: space-between;
+    gap: 60px; /* Espaçamento elegante entre a foto e o texto */
+    max-width: 1100px;
+    margin: 0 auto; /* Centraliza o bloco na página */
+}
+
+/* Coluna da Imagem */
+.about-image {
+    flex: 1; /* Ocupa 50% do espaço */
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 450px; /* Limita o tamanho máximo da foto */
+    height: auto;
+    display: block;
+    border-radius: 2px; /* Corte mais reto e sofisticado */
+    /* Esse detalhe cria um fundo sólido bege atrás da sua foto, super moderno: */
+    box-shadow: -20px 20px 0px var(--accent-beige); 
+}
+
+/* Coluna do Texto */
+.about-text {
+    flex: 1; /* Ocupa os outros 50% */
+    text-align: left; /* Alinhamento à esquerda fica mais elegante ao lado da foto */
+}
+
+.about-text h2 { 
+    color: var(--primary-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+/* Botão Secundário Transparente (Outline) */
+.cta-button-outline {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    border: 1px solid var(--primary-dark);
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.cta-button-outline:hover {
+    background: var(--primary-dark);
+    color: var(--accent-beige);
+}
+
+/* ===========================
+   RESPONSIVIDADE (CELULARES)
+   =========================== */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Coloca um embaixo do outro no celular */
+        text-align: center;
+    }
+    
+    .about-text {
+        text-align: center; /* Centraliza o texto no celular */
+        margin-top: 30px; /* Dá espaço da foto */
+    }
+
+    .about-image img {
+        box-shadow: -10px 10px 0px var(--accent-beige); /* Diminui o detalhe da sombra */
+        margin: 0 auto; /* Centraliza a foto */
+    }
+}
+/* ===========================
+   SEÇÃO DECORADO E LOCALIZAÇÃO
+   =========================== */
+.store-section {
+    background: var(--accent-beige); /* Fundo palha para destacar o bloco */
+    padding: 90px 5%;
+    border-top: 1px solid var(--accent-gold);
+}
+
+.store-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+@media (max-width: 768px) {
+    .store-container {
+        flex-direction: column; /* Coloca um embaixo do outro no celular */
+        text-align: center;
+    }
+}
+.store-info {
+    flex: 1;
+    text-align: left;
+}
+
+.store-info h2 {
+    color: var(--primary-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.store-info p {
+    color: var(--primary-dark); /* Usa o azul escuro para dar contraste no fundo palha */
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+}
+
+/* Lista de Endereço e Horário */
+.store-details {
+    list-style: none;
+    margin: 30px 0;
+    padding: 0;
+}
+
+.store-details li {
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.store-details i {
+    color: var(--primary-light);
+    font-size: 1.2rem;
+}
+
+/* Estilização do Quadro do Mapa */
+.store-map {
+    flex: 1;
+    border-radius: 2px;
+    overflow: hidden;
+    /* Sombra elegante em tom de azul marinho deslocada */
+    box-shadow: 15px 15px 0px rgba(15, 23, 42, 0.1); 
+    border: 1px solid rgba(15, 23, 42, 0.2);
+}
+
+.store-map iframe {
+    display: block; /* Remove o espaço fantasma abaixo do iframe */
+    width: 100%;
+}
+/* ===========================
+   SEÇÃO DE DEPOIMENTOS
+   =========================== */
+.testimonials {
+    background: var(--bg-light); /* Fundo claro para contrastar com a loja e o footer */
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.testimonials h2 {
+    color: var(--primary-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card do Depoimento */
+.testimonial-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border: 1px solid #eaeaea;
+    border-top: 4px solid var(--accent-gold); /* Detalhe dourado no topo */
+    border-radius: 2px;
+    text-align: left; /* Mantém a leitura limpa */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Estrelas de Avaliação */
+.testimonial-card .stars {
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    letter-spacing: 2px; /* Espaço entre as estrelinhas */
+}
+
+/* Texto do Cliente */
+.testimonial-card p {
+    font-style: italic; /* Dá um tom de citação real */
+    color: var(--text-main);
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    flex-grow: 1; /* Empurra o nome do cliente para o final do card */
+}
+
+/* Assinatura do Cliente */
+.client-info h4 {
+    color: var(--primary-dark);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.client-info span {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+/* Estilos do botão de Hambúrguer (Escondido no Computador) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px; /* Espaço entre as linhas */
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--accent-beige); /* Azul marinho elegante */
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+    /* Mostra o ícone de hambúrguer */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Esconde e estiliza a lista de links para descer como uma gaveta */
+    ul#nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 50px; /* Ajuste dependendo da altura real do seu cabeçalho */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-dark);
+        box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    /* Classe que o JavaScript vai ativar para mostrar o menu */
+    ul#nav-list.active {
+        display: flex;
+    }
+
+    ul#nav-list li {
+        margin: 15px 0;
+    }
+}
